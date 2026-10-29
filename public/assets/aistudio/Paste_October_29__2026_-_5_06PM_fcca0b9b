@@ -1,0 +1,1504 @@
+# PROJECT TITLE: LearnHub — Learning Management System (LMS)
+
+## 1. ROLE AND PROJECT OBJECTIVE
+
+Act as a professional frontend developer, React.js engineer, UI/UX designer, and responsive web development specialist.
+
+Build a complete, modern, professional, portfolio-quality Learning Management System (LMS) named **LearnHub** using React.js, Vite, Tailwind CSS, React Router, and Lucide React.
+
+The website should allow students to discover courses, explore course details, enroll in courses, access lessons, mark lessons as completed, and track their learning progress through a personalized learning dashboard.
+
+The project must fulfill every mandatory requirement in the provided Frontend Task 6 PDF. Do not skip pages, features, interactions, responsive layouts, testing requirements, or deployment configurations.
+
+The final website should look like a real educational platform that could be presented to a client, employer, or university instructor.
+
+**Important:** This is a frontend-only project. Do not create a backend, database, authentication server, payment system, or paid API integration.
+
+All course data must come from local JavaScript files, while enrollment and completed lesson progress must be saved in the browser's localStorage.
+
+---
+
+## 2. MANDATORY TECHNOLOGIES AND TOOLS
+
+Use the following technologies exactly as required:
+
+1. React.js — Build reusable, component-based user interfaces.
+2. Vite — Set up the project and development server.
+3. Tailwind CSS — Handle all styling, layouts, spacing, colors, typography, and responsiveness.
+4. React Router DOM — Implement navigation and all required routes.
+5. Lucide React — Provide consistent icons throughout the website.
+6. React Hooks — Use useState and useEffect for application state and side effects.
+7. Custom useLocalStorage Hook — Save and retrieve enrollment and progress information.
+8. JavaScript — Store course, lesson, and instructor data in local files.
+9. Git and GitHub — Manage source code and version history.
+10. Vercel — Deploy the completed website.
+
+### Allowed packages
+
+Only use these additional packages:
+
+* react-router-dom
+* lucide-react
+* tailwindcss
+* @tailwindcss/vite
+
+Use the standard React and Vite dependencies as well.
+
+Do not install Redux, Bootstrap, Material UI, animation libraries, video-player libraries, form libraries, or additional state-management libraries.
+
+Do not use TypeScript. Create the project using the React JavaScript template.
+
+---
+
+## 3. PROJECT DESIGN AND BRAND IDENTITY
+
+Create an original brand identity for LearnHub.
+
+### Visual direction
+
+Design a clean, modern, premium educational platform with a professional SaaS-style interface.
+
+The design should communicate:
+
+* Education and knowledge.
+* Professional development.
+* Simplicity and clarity.
+* Trust and accessibility.
+* Motivation and continuous learning.
+
+### Suggested color palette
+
+Use a consistent color system throughout the application:
+
+* Primary: Indigo (#4F46E5).
+* Primary dark: Indigo (#3730A3).
+* Secondary: Teal (#14B8A6).
+* Main background: Light gray (#F8FAFC).
+* Card background: White (#FFFFFF).
+* Main text: Slate (#0F172A).
+* Secondary text: Slate gray (#64748B).
+* Borders: Light slate (#E2E8F0).
+* Success: Green (#16A34A).
+* Warning: Amber (#F59E0B).
+* Error: Red (#DC2626).
+
+These colors are design suggestions. Use them consistently and ensure readable contrast.
+
+### Typography
+
+Use a consistent, modern sans-serif font system.
+
+Establish a clear hierarchy for:
+
+* Main headings.
+* Section headings.
+* Course titles.
+* Body text.
+* Labels.
+* Buttons.
+* Metadata.
+
+Use consistent spacing, rounded cards, subtle shadows, appropriate whitespace, and clear visual hierarchy.
+
+### Logo
+
+Create an original LearnHub logo using a graduation-cap or book icon from Lucide React alongside the LearnHub wordmark.
+
+The logo must link to the homepage.
+
+### General design requirements
+
+* Create a polished desktop experience.
+* Adapt the layout for tablets and mobile phones.
+* Use consistent button, card, badge, and progress-bar styles.
+* Provide hover and focus states.
+* Use subtle transitions for interactive elements without installing animation libraries.
+* Avoid excessive gradients, unnecessary decorations, and overcrowded layouts.
+* Do not use Lorem Ipsum.
+* Use realistic educational content.
+* Do not make fake claims about certificates, payments, or server synchronization.
+* Ensure every visible interactive element has a real function.
+
+---
+
+## 4. REQUIRED WEBSITE PAGES AND ROUTES
+
+Create all the following pages using React Router.
+
+### Route 1: Homepage (/)
+
+### Route 2: Course Listing (/courses)
+
+### Route 3: Course Details (/courses/:courseId)
+
+### Route 4: Student Dashboard (/dashboard)
+
+### Route 5: Lesson Page (/learn/:courseId/:lessonId)
+
+### Route 6: Not Found Page (*)
+
+The Not Found page handles invalid routes and missing course or lesson IDs.
+
+Create a shared layout with one reusable Navbar and Footer across all applicable pages.
+
+All navigation must work without a full-page reload.
+
+---
+
+## 5. HOMEPAGE REQUIREMENTS
+
+Build an attractive and fully functional homepage.
+
+### A. Navigation Bar
+
+Create a responsive navbar containing:
+
+* LearnHub logo.
+* Home link.
+* Courses link.
+* My Learning link.
+* Profile avatar with initials.
+* Display name such as "Alex Morgan".
+* Mobile menu button.
+
+The profile is display-only. Do not implement login or authentication.
+
+Requirements:
+
+* Highlight the active navigation link.
+* Use React Router navigation.
+* Keep the navbar consistent across pages.
+* On mobile, display a menu button that opens and closes the navigation links.
+* Close the mobile menu after a navigation link is selected.
+* Make the logo clickable.
+* Ensure every navigation item works.
+
+### B. Hero Section
+
+Create a visually appealing hero section with:
+
+Main heading:
+"Your Next Skill Starts Here."
+
+Supporting text:
+"Discover practical courses, learn at your own pace, and turn your curiosity into real-world skills."
+
+Include:
+
+* Course search input.
+* Search button.
+* Appropriate search icon.
+* An educational illustration or properly licensed learning-related image.
+* A short supporting message about learning opportunities.
+
+When the user submits a search:
+
+1. Read the entered keyword.
+2. Navigate to /courses.
+3. Pass the search query through URL search parameters.
+4. Automatically display the matching courses.
+5. Show all courses if the search input is empty.
+
+The search button and Enter key must both work.
+
+### C. Featured Courses
+
+Display four featured courses using reusable CourseCard components.
+
+Each card must contain:
+
+* Course thumbnail.
+* Course title.
+* Instructor name.
+* Category.
+* Difficulty badge.
+* Duration.
+* Lesson count.
+* View Course button or clickable course area.
+
+Selecting a course opens its Course Details page.
+
+Featured courses must be selected from the actual local course dataset.
+
+### D. Popular Categories
+
+Display six category cards, using categories represented in the course data.
+
+Suggested categories:
+
+* Web Development.
+* UI/UX Design.
+* Data Science.
+* Programming.
+* Digital Marketing.
+* Business.
+
+Each category card should contain:
+
+* A Lucide React icon.
+* Category name.
+* Short description or course count.
+
+Clicking a category must open /courses with the category filter applied.
+
+Only show categories supported by the actual dataset.
+
+### E. Platform Highlights
+
+Display three or four genuine platform highlights, such as:
+
+* Learn at Your Own Pace.
+* Track Your Progress.
+* Structured Learning Paths.
+* Practical Learning Resources.
+
+Only describe functionality that exists in the application.
+
+### F. Footer
+
+Create a reusable footer with:
+
+* LearnHub logo.
+* Brief platform description.
+* Home link.
+* Courses link.
+* My Learning link.
+* Copyright notice.
+
+Do not add dead links or decorative links that do nothing.
+
+---
+
+## 6. COURSE LISTING PAGE REQUIREMENTS
+
+Route: /courses
+
+Create a complete course discovery page.
+
+### A. Page Header
+
+Display:
+
+* Page title: "Explore Courses".
+* Supporting description.
+* Search field.
+* Filter controls.
+
+### B. Course Search
+
+Allow users to search by:
+
+* Course title.
+* Instructor name.
+* Category.
+* Course description.
+
+Search must be case-insensitive.
+
+Update the visible results when the search changes.
+
+Use React state and JavaScript filtering.
+
+### C. Category Filter
+
+Provide a category dropdown containing all available categories.
+
+Include an option to select all categories.
+
+Changing the category must update the displayed course list.
+
+### D. Difficulty Filter
+
+Provide the following options:
+
+* All Levels.
+* Beginner.
+* Intermediate.
+* Advanced.
+
+The selected difficulty must filter courses correctly.
+
+### E. Combined Filtering
+
+Search, category filtering, and difficulty filtering must work together.
+
+For example, selecting Web Development and Beginner should show only courses matching both conditions and the search keyword, if one is entered.
+
+Do not store the filtered results in separate state. Calculate them from the original course data during rendering.
+
+Use JavaScript's .filter() method.
+
+### F. Reset Filters
+
+Provide a clearly visible Reset Filters button.
+
+When clicked, it must:
+
+* Clear the search keyword.
+* Reset the category.
+* Reset the difficulty level.
+* Update the URL search parameters appropriately.
+* Display the complete course list.
+
+### G. Course Result Count
+
+Display the correct result count.
+
+Example:
+
+"Showing 4 of 8 courses"
+
+Calculate both values dynamically.
+
+### H. Course Grid
+
+Use one reusable CourseCard component for all course cards.
+
+Every card must show:
+
+* Thumbnail.
+* Course title.
+* Instructor.
+* Category.
+* Difficulty level.
+* Duration.
+* Number of lessons.
+* Link to course details.
+
+Use responsive grid layouts.
+
+### I. Empty State
+
+If no course matches the selected filters, display:
+
+"No courses found."
+
+Also provide:
+
+* A brief explanation.
+* A Reset Filters button.
+* An appropriate Lucide icon.
+
+The reset button must work.
+
+### J. Loading State
+
+When the course data first loads, display a spinner or skeleton for approximately 0.5–1 second.
+
+Use React state and useEffect.
+
+The loading indicator must disappear when the data is ready.
+
+---
+
+## 7. COURSE DETAILS PAGE REQUIREMENTS
+
+Route: /courses/:courseId
+
+Create a detailed page for each course.
+
+### A. Course Information
+
+Display:
+
+* Course thumbnail or hero image.
+* Course title.
+* Course description.
+* Instructor name.
+* Category.
+* Difficulty level.
+* Course duration.
+* Number of lessons.
+
+Use appropriate badges and icons.
+
+### B. Learning Outcomes
+
+Create a "What You'll Learn" section with four to six learning outcomes for each course.
+
+The outcomes must be relevant to the selected course.
+
+For example, a web development course could teach students to:
+
+* Understand HTML page structure.
+* Style layouts using CSS.
+* Create responsive web pages.
+* Understand JavaScript fundamentals.
+* Build reusable interface elements.
+
+Do not use the same generic outcomes for every course.
+
+### C. Course Curriculum
+
+Display the complete lesson curriculum.
+
+Each lesson row must include:
+
+* Lesson number.
+* Lesson title.
+* Lesson duration.
+* Lesson icon or status icon.
+
+Use actual lesson information from the selected course object.
+
+### D. Enrollment Button
+
+Before enrollment, display:
+
+"Enroll Now — Free"
+
+When clicked:
+
+1. Add the course ID to the enrolled courses array.
+2. Prevent duplicate enrollment.
+3. Save the updated enrollment information in localStorage.
+4. Display a short success toast.
+5. Change the button to an Enrolled state.
+6. Provide a button to open the course lessons.
+
+Do not display prices, checkout pages, or payment options.
+
+If the course is already enrolled, never add it again.
+
+### E. Back Navigation
+
+Provide a Back to Courses link or breadcrumb.
+
+It must navigate to the course listing page.
+
+### F. Not Found Handling
+
+If the course ID does not exist, display a friendly Course Not Found page.
+
+Include:
+
+* A clear message.
+* A link to Courses.
+* A button to return Home.
+
+Do not crash the application.
+
+---
+
+## 8. STUDENT DASHBOARD REQUIREMENTS
+
+Route: /dashboard
+
+Create a personalized learning dashboard named "My Learning".
+
+The dashboard must use the actual enrollment and lesson completion data stored in application state and localStorage.
+
+### A. Dashboard Header
+
+Display:
+
+* Heading: "My Learning".
+* Short motivational subtitle.
+* Number of enrolled courses.
+* Total lessons completed, if useful.
+
+Any summary numbers must be calculated from real application data.
+
+### B. Enrolled Course Cards
+
+Display every enrolled course.
+
+Each dashboard card must include:
+
+* Course thumbnail.
+* Course title.
+* Instructor.
+* Difficulty badge.
+* Progress bar.
+* Progress percentage.
+* Completed lesson count.
+* Remaining lesson count.
+
+Example:
+
+* 3 of 8 lessons completed.
+* 5 lessons remaining.
+* Progress: 37.5%.
+
+Calculate progress dynamically:
+
+Progress Percentage = (Completed Lessons / Total Lessons) × 100
+
+Round the displayed percentage to a suitable whole number.
+
+A course with no completed lessons must display 0%.
+
+A fully completed course must display 100%.
+
+### C. Continue Learning Button
+
+For an incomplete course, display a "Continue Learning" button.
+
+When clicked:
+
+1. Identify the first incomplete lesson.
+2. Navigate to that lesson's URL.
+3. Continue from the correct lesson.
+4. Never select a completed lesson if an incomplete lesson is available.
+
+If every lesson is completed:
+
+* Display a Completed badge.
+* Replace Continue Learning with Review Course.
+* Allow the learner to reopen the course lessons.
+
+### D. Empty Dashboard
+
+When no courses are enrolled, display:
+
+"Your learning journey starts here."
+
+Include:
+
+* A relevant icon or illustration.
+* A short supporting message.
+* A Browse Courses button.
+
+The button must navigate to /courses.
+
+---
+
+## 9. LESSON PAGE REQUIREMENTS
+
+Route: /learn/:courseId/:lessonId
+
+Build a functional learning interface.
+
+### A. Lesson Header
+
+Display:
+
+* Course title linking to its Course Details page.
+* Current lesson title.
+* Lesson position, such as "Lesson 2 of 8".
+* Course progress percentage.
+
+Calculate the lesson number and total dynamically.
+
+### B. Lesson Video Area
+
+Create a responsive 16:9 lesson video area.
+
+Use either:
+
+1. An HTML5 video element with a suitable free sample video; or
+2. A polished custom video placeholder with a play button.
+
+A placeholder is acceptable.
+
+If using a placeholder, do not falsely suggest that a real video is playing.
+
+The video container must remain responsive.
+
+Do not install a video-player library.
+
+### C. Lesson Description
+
+Display the selected lesson's description.
+
+The content must change when the learner switches lessons.
+
+### D. Learning Resources
+
+Display two or three relevant learning resources per lesson.
+
+Each resource should include:
+
+* Resource title.
+* Resource type, such as Article, Documentation, or Practice.
+* An appropriate icon.
+
+External links must lead to genuine, relevant resources.
+
+If a resource is not linked to a real destination, display it as plain text rather than a fake link.
+
+### E. Lesson Sidebar
+
+Create a reusable LessonSidebar component.
+
+It must display:
+
+* All lessons in the course.
+* Lesson numbers.
+* Lesson titles.
+* Lesson durations.
+* The current lesson highlighted.
+* A check icon for completed lessons.
+
+Clicking a lesson should navigate to that lesson's URL.
+
+The current lesson must be clearly distinguishable.
+
+### F. Mark as Complete
+
+Provide a "Mark as Complete" button.
+
+When clicked:
+
+1. Add the current lesson ID to the course's completed lesson list.
+2. Prevent duplicate completion entries.
+3. Update the application state immediately.
+4. Save the updated progress to localStorage.
+5. Update the dashboard progress percentage.
+6. Update completed and remaining lesson counts.
+7. Show a success toast.
+8. Display the completion check icon in the lesson sidebar.
+
+If the lesson is already completed, display a suitable Completed state.
+
+Marking a lesson complete must not duplicate its ID.
+
+### G. Previous Lesson and Next Lesson
+
+Provide Previous Lesson and Next Lesson buttons.
+
+Requirements:
+
+* Previous Lesson is disabled on the first lesson.
+* Next Lesson is disabled on the last lesson.
+* Each button navigates to the correct lesson.
+* Lesson order comes from the course's lesson array.
+* Navigation must not accidentally change the selected course.
+
+### H. Enrollment Validation
+
+If a learner opens a lesson without enrolling in its course, do not display the lesson content.
+
+Instead, show:
+
+"You need to enroll in this course before accessing its lessons."
+
+Include an Enroll Now button.
+
+When clicked, enroll the learner and save the enrollment.
+
+After successful enrollment, allow access to the lesson.
+
+### I. Invalid Lesson Handling
+
+If the course ID or lesson ID does not exist, display a friendly Not Found page.
+
+Never render undefined lesson content or crash.
+
+---
+
+## 10. LOCAL COURSE DATA REQUIREMENTS
+
+Create a realistic local dataset with at least eight courses.
+
+Use a minimum of four different categories and include all three difficulty levels:
+
+* Beginner.
+* Intermediate.
+* Advanced.
+
+All courses must be free.
+
+Never display course prices or payment options.
+
+### Required Course Data Structure
+
+Each course should contain:
+
+* id
+* title
+* thumbnail
+* description
+* instructor
+* category
+* level
+* duration
+* featured
+* outcomes
+* lessons
+
+Use meaningful, unique course IDs.
+
+Suggested course IDs:
+
+* react-basics
+* javascript-fundamentals
+* ui-ux-design
+* python-data-analysis
+* responsive-web-design
+* digital-marketing
+* database-fundamentals
+* advanced-react-patterns
+
+These are suggested IDs; use them consistently if selected.
+
+### Lesson Data Structure
+
+Each course must contain at least five lessons.
+
+Every lesson must include:
+
+* id
+* title
+* duration
+* description
+* videoUrl, where applicable
+* resources
+
+Lesson IDs must be unique within their course.
+
+Prefer globally unique lesson IDs to simplify progress tracking.
+
+### Suggested Lesson Topics
+
+Use realistic lesson titles, for example:
+
+For React Basics:
+
+1. Introduction to React.
+2. Components and JSX.
+3. Props and Reusable Components.
+4. Managing State with useState.
+5. Side Effects with useEffect.
+6. Building a Small React Project.
+
+Provide at least five lessons for every course, with meaningful titles, descriptions, and resources.
+
+### Instructor Data
+
+Create a separate instructors.js file if instructor cards are included.
+
+If using instructor cards, provide at least four instructor records.
+
+Each instructor must include:
+
+* id
+* name
+* role
+* photo
+* bio
+
+All instructor information should be consistent with the courses they teach.
+
+Use properly licensed images or reliable image sources.
+
+Do not fabricate credentials or make misleading professional claims.
+
+---
+
+## 11. LOCALSTORAGE AND STATE MANAGEMENT
+
+This section is mandatory.
+
+Do not use a backend, database, Context API requirement, Redux, or another state-management library.
+
+Keep shared enrollment and progress state in App.jsx and pass the required data and callbacks through props.
+
+### A. Enrollment Storage
+
+Use this localStorage key:
+
+learnhub_enrolled
+
+Example value:
+
+["react-basics", "ui-design"]
+
+Store enrolled course IDs as an array.
+
+### B. Progress Storage
+
+Use this localStorage key:
+
+learnhub_progress
+
+Example value:
+
+{
+"react-basics": ["rb-1", "rb-2"],
+"ui-design": ["ud-1"]
+}
+
+Store completed lesson IDs for each course.
+
+### C. Custom Hook
+
+Create:
+
+src/hooks/useLocalStorage.js
+
+Implement a reusable useLocalStorage(key, initialValue) hook using useState and useEffect.
+
+Requirements:
+
+* Read existing data from localStorage.
+* Use JSON.parse safely.
+* Wrap JSON parsing in try/catch.
+* If stored data is invalid, use the initial value instead of crashing.
+* Save updates to localStorage.
+* Support functional state updates.
+* Ensure changes appear in the UI immediately.
+* Handle unavailable localStorage gracefully where practical.
+
+Do not access localStorage during server rendering, if applicable.
+
+### D. Shared State
+
+Maintain shared enrollment and progress state in App.jsx.
+
+Pass the state and update callbacks to pages through props.
+
+Context API is optional but unnecessary for this project.
+
+### E. Derived Values
+
+Calculate the following using helper functions rather than storing duplicate values in state:
+
+* Course progress percentage.
+* Completed lesson count.
+* Remaining lesson count.
+* Enrollment status.
+* First incomplete lesson.
+* Filtered course list.
+
+Create:
+
+src/utils/helpers.js
+
+Include clear, reusable functions for these calculations.
+
+### F. Feedback Messages
+
+After enrollment and lesson completion, display a short toast or feedback message.
+
+The message should disappear after approximately three seconds.
+
+Implement this using React state and useEffect.
+
+Do not install a notification library.
+
+### G. Honest Data Persistence
+
+Progress is saved only in the user's browser.
+
+Do not claim that progress is synchronized with a server or shared across devices.
+
+---
+
+## 12. REQUIRED PROJECT FOLDER STRUCTURE
+
+Organize the project using this structure:
+
+learnhub/
+│
+├── public/
+│   └── images/
+│
+├── src/
+│   ├── main.jsx
+│   ├── App.jsx
+│   ├── index.css
+│   │
+│   ├── pages/
+│   │   ├── Home.jsx
+│   │   ├── Courses.jsx
+│   │   ├── CourseDetails.jsx
+│   │   ├── Dashboard.jsx
+│   │   ├── Lesson.jsx
+│   │   └── NotFound.jsx
+│   │
+│   ├── components/
+│   │   ├── layout/
+│   │   │   ├── Navbar.jsx
+│   │   │   └── Footer.jsx
+│   │   │
+│   │   ├── courses/
+│   │   │   ├── CourseCard.jsx
+│   │   │   ├── SearchBar.jsx
+│   │   │   ├── FilterPanel.jsx
+│   │   │   ├── CategoryCard.jsx
+│   │   │   └── InstructorCard.jsx
+│   │   │
+│   │   ├── lessons/
+│   │   │   ├── LessonSidebar.jsx
+│   │   │   └── VideoPlayer.jsx
+│   │   │
+│   │   └── common/
+│   │       ├── ProgressBar.jsx
+│   │       ├── EmptyState.jsx
+│   │       ├── Spinner.jsx
+│   │       ├── Toast.jsx
+│   │       ├── Badge.jsx
+│   │       └── Button.jsx
+│   │
+│   ├── data/
+│   │   ├── courses.js
+│   │   └── instructors.js
+│   │
+│   ├── hooks/
+│   │   └── useLocalStorage.js
+│   │
+│   ├── utils/
+│   │   └── helpers.js
+│   │
+│   └── assets/
+│       └── images/
+│
+├── index.html
+├── vite.config.js
+├── package.json
+├── vercel.json
+├── README.md
+└── .gitignore
+
+Follow this structure closely.
+
+Do not put the entire application in a single component.
+
+Every page and reusable component must have a clear responsibility.
+
+You may add small helper files if genuinely necessary, but do not introduce unnecessary complexity.
+
+---
+
+## 13. ROUTING AND APPLICATION ARCHITECTURE
+
+Implement routing with React Router DOM.
+
+Wrap the application in BrowserRouter in main.jsx.
+
+Create the following routes:
+
+* / → Home
+* /courses → Courses
+* /courses/:courseId → CourseDetails
+* /dashboard → Dashboard
+* /learn/:courseId/:lessonId → Lesson
+* * → NotFound
+
+Render the shared Navbar and Footer through the main application layout.
+
+Use:
+
+* Link and NavLink for navigation.
+* useNavigate for programmatic navigation.
+* useParams to read courseId and lessonId.
+* useSearchParams to initialize and manage course search and filters.
+
+Unknown URLs must display a friendly Not Found page.
+
+Unknown course and lesson IDs must also be handled safely.
+
+Ensure direct URL navigation and browser refresh work correctly after deployment.
+
+Do not use document.getElementById, querySelector, or innerHTML to manipulate the UI.
+
+Use React state, props, event handlers, and conditional rendering.
+
+Render lists with .map() and unique keys.
+
+---
+
+## 14. RESPONSIVE UI/UX REQUIREMENTS
+
+The website must work correctly on desktop, tablet, and mobile.
+
+Use Tailwind CSS responsive utilities.
+
+### A. Desktop — Approximately 1280px
+
+Requirements:
+
+* Full navbar with visible navigation links.
+* Three- or four-column course grid.
+* Filters displayed beside or above the results.
+* Spacious course cards.
+* Balanced hero layout.
+* Lesson video on the left and lesson sidebar on the right.
+* Properly aligned dashboard cards and progress bars.
+
+### B. Tablet — Approximately 768px
+
+Requirements:
+
+* Two-column course grid.
+* Responsive navbar or menu button when needed.
+* Stacked or compact filter controls.
+* Appropriate text and image sizing.
+* Lesson sidebar moves below the video when necessary.
+* No overlapping content.
+
+### C. Mobile — Approximately 375px
+
+Requirements:
+
+* Single-column course grid.
+* Collapsible navigation menu.
+* Stacked filters or an accessible filter toggle.
+* Full-width lesson video.
+* Lesson sidebar positioned below the video.
+* Touch-friendly buttons.
+* Readable text and spacing.
+* Responsive images.
+* No horizontal scrolling.
+* No clipped cards, overflowing headings, or overlapping controls.
+
+### D. Responsive Testing
+
+Test the website at these widths:
+
+* 1280px.
+* 768px.
+* 375px.
+
+Also check intermediate widths where layouts change.
+
+Use Tailwind's responsive classes to adjust:
+
+* Grid columns.
+* Padding and margins.
+* Font sizes.
+* Navigation.
+* Card widths.
+* Sidebar placement.
+* Button layout.
+* Filter controls.
+
+Do not simply shrink the desktop design.
+
+Create a layout specifically suited to mobile users.
+
+### E. Accessibility
+
+Ensure:
+
+* All form fields have labels.
+* Icon-only buttons have aria-label attributes.
+* Images have appropriate alt text.
+* Keyboard focus is visible.
+* Text contrast is readable.
+* Navigation uses semantic HTML.
+* Buttons and links are distinguishable.
+* Disabled buttons have clear disabled states.
+* Mobile navigation can be operated with a keyboard.
+* The application uses semantic header, nav, main, section, and footer elements.
+
+---
+
+## 15. VISUAL POLISH AND INTERACTIONS
+
+Add professional UI details without adding prohibited packages.
+
+Implement:
+
+* Consistent card borders and shadows.
+* Subtle hover transitions.
+* Active navigation indicators.
+* Course category badges.
+* Difficulty badges.
+* Progress bars with percentage labels.
+* Loading skeletons or spinners.
+* Empty states with icons and helpful actions.
+* Success toast messages.
+* Clear button states.
+* Focus rings.
+* Responsive navigation.
+* Proper image cropping.
+* Consistent border radius.
+* Suitable line heights.
+* Helpful labels and instructional text.
+
+Ensure these details improve usability rather than distracting from the learning experience.
+
+Do not add decorative controls that do nothing.
+
+Do not add optional features until all mandatory requirements work correctly.
+
+---
+
+## 16. FUNCTIONAL REQUIREMENTS AND USER FLOWS
+
+The following workflows must work from beginning to end.
+
+### Workflow A: Explore and Enroll
+
+1. User opens the homepage.
+2. User searches for a course or clicks a category.
+3. User reaches the Courses page with the correct search or category filter.
+4. User browses the course cards.
+5. User opens a course.
+6. User reads the course description, outcomes, and curriculum.
+7. User clicks Enroll Now.
+8. The course is added to the enrolled courses list.
+9. Enrollment is saved in localStorage.
+10. The UI changes to an Enrolled state.
+11. User opens the course lessons.
+12. The enrolled course appears in My Learning.
+
+### Workflow B: Learn and Track Progress
+
+1. User opens My Learning.
+2. User sees all enrolled courses.
+3. User checks completed and remaining lesson counts.
+4. User clicks Continue Learning.
+5. The first incomplete lesson opens.
+6. User reads the lesson description and learning resources.
+7. User navigates between lessons.
+8. User clicks Mark as Complete.
+9. The lesson is marked complete.
+10. The lesson sidebar displays the completed check icon.
+11. The course progress bar updates immediately.
+12. The dashboard reflects the new progress.
+13. Progress is saved to localStorage.
+14. Refreshing the browser preserves the enrollment and completed lessons.
+
+### Workflow C: Filtering Courses
+
+1. User opens Courses.
+2. User searches for a keyword.
+3. User selects a category.
+4. User selects a difficulty level.
+5. All filters work together.
+6. The result count updates.
+7. If no results match, an empty state appears.
+8. Reset Filters clears every filter.
+
+### Workflow D: Complete a Course
+
+1. User completes the course's lessons.
+2. Progress reaches 100%.
+3. Dashboard displays Completed.
+4. Continue Learning is replaced with Review Course.
+5. User can reopen lessons for review.
+
+### Workflow E: Validation
+
+Verify that:
+
+* Invalid course IDs display Course Not Found.
+* Invalid lesson IDs display Not Found.
+* An unregistered course lesson displays an enrollment message.
+* Duplicate enrollment is prevented.
+* Duplicate lesson completion is prevented.
+* Invalid localStorage JSON does not crash the application.
+* Empty search shows all courses.
+* Reset Filters works correctly.
+
+---
+
+## 17. SETUP AND IMPLEMENTATION REQUIREMENTS
+
+Create the project using Vite and React JavaScript.
+
+The setup commands should be:
+
+npm create vite@latest learnhub -- --template react
+
+cd learnhub
+
+npm install
+
+npm install react-router-dom lucide-react
+
+npm install tailwindcss @tailwindcss/vite
+
+Configure Tailwind CSS using the @tailwindcss/vite plugin in vite.config.js.
+
+Import Tailwind CSS in src/index.css using:
+
+@import "tailwindcss";
+
+Wrap the application in BrowserRouter in main.jsx.
+
+Configure package scripts correctly.
+
+Use:
+
+npm run dev
+
+to start the development server.
+
+Use:
+
+npm run build
+
+to verify that the project builds successfully.
+
+Do not use TypeScript.
+
+Ensure all imports, exports, file names, and component names match exactly.
+
+---
+
+## 18. TESTING REQUIREMENTS
+
+Before declaring the project complete, test every required feature.
+
+### Navigation Tests
+
+* Navbar links work on all pages.
+* Active navigation state is correct.
+* Logo returns to Home.
+* Footer links work.
+* Mobile navigation opens and closes.
+* Browser refresh works on nested routes.
+
+### Course Listing Tests
+
+* Search matches titles.
+* Search matches instructor names.
+* Search matches categories and descriptions.
+* Search is case-insensitive.
+* Category filtering works.
+* Difficulty filtering works.
+* Combined filtering works.
+* Reset Filters clears all filters.
+* Result count is accurate.
+* Empty state appears when no courses match.
+
+### Course Details Tests
+
+* Correct course information is displayed.
+* Learning outcomes are relevant.
+* Curriculum shows all lessons.
+* Enroll Now works.
+* Duplicate enrollment is prevented.
+* Success feedback appears.
+* Existing enrollment remains after refresh.
+* Unknown course IDs are handled correctly.
+
+### Dashboard Tests
+
+* Empty state appears when no course is enrolled.
+* Browse Courses works.
+* All enrolled courses are displayed.
+* Progress percentages are accurate.
+* Completed and remaining lesson counts are correct.
+* Continue Learning opens the first incomplete lesson.
+* Fully completed courses display Completed.
+* Review Course works.
+
+### Lesson Tests
+
+* Correct lesson title and position are displayed.
+* Sidebar lists all lessons.
+* Current lesson is highlighted.
+* Completed lessons show a check icon.
+* Previous Lesson works.
+* Next Lesson works.
+* Boundary buttons are disabled.
+* Mark as Complete updates progress.
+* Completion cannot be duplicated.
+* An un-enrolled learner receives the enrollment prompt.
+* Invalid lesson URLs are handled safely.
+
+### Persistence Tests
+
+* Enrolled courses survive a page refresh.
+* Completed lessons survive a page refresh.
+* Dashboard progress matches saved progress.
+* Malformed localStorage data does not crash the application.
+
+### Responsive Tests
+
+Test at:
+
+* Desktop: 1280px.
+* Tablet: 768px.
+* Mobile: 375px.
+
+Verify:
+
+* No horizontal overflow.
+* No overlapping elements.
+* Cards fit the screen.
+* Filters remain usable.
+* Lesson video remains responsive.
+* Buttons are easy to tap.
+* Navigation is accessible.
+
+### Build Tests
+
+Run:
+
+npm run build
+
+Resolve all build errors.
+
+Check the browser console for errors and fix broken imports, missing assets, React key warnings, and navigation issues.
+
+Do not claim that a test passed unless it has actually been performed.
+
+---
+
+## 19. GITHUB, README, AND VERCEL DEPLOYMENT
+
+Prepare the project for submission.
+
+### A. GitHub
+
+Create a public repository named:
+
+learnhub-lms
+
+Use meaningful commits as the project develops.
+
+Suggested commits:
+
+1. Initialize LearnHub with Vite and Tailwind CSS.
+2. Add local course and instructor data.
+3. Build shared layout and routing.
+4. Implement homepage and course listing.
+5. Add course details and enrollment.
+6. Implement dashboard and progress tracking.
+7. Build lesson interface.
+8. Improve responsive UI and accessibility.
+9. Complete testing and documentation.
+
+Do not upload node_modules.
+
+Include the complete source code and a clean project structure.
+
+### B. README.md
+
+Create a professional README containing:
+
+1. Project title.
+2. Project description.
+3. Screenshot of the completed website.
+4. Main features.
+5. Technologies used.
+6. Project structure.
+7. Installation instructions.
+8. Local development instructions.
+9. Build instructions.
+10. GitHub repository link.
+11. Live Vercel demo link.
+12. Image and sample-video credits.
+
+Use actual screenshots and real URLs when available.
+
+Do not invent a deployed URL.
+
+### C. Vercel Deployment
+
+Prepare the project for Vercel deployment.
+
+Use:
+
+* Build command: npm run build
+* Output directory: dist
+* Framework preset: Vite
+
+Create a vercel.json file in the project root with this configuration:
+
+{
+"rewrites": [
+{
+"source": "/(.*)",
+"destination": "/index.html"
+}
+]
+}
+
+This rewrite should allow React Router routes to work when users open or refresh a nested URL.
+
+Push the configuration to GitHub before deploying.
+
+### D. Final Deployment Verification
+
+After deployment:
+
+* Open the live homepage.
+* Test every page.
+* Refresh /courses.
+* Refresh /dashboard.
+* Open a course details URL directly.
+* Open a lesson URL directly.
+* Check mobile layouts.
+* Confirm that no major assets are broken.
+* Confirm the deployed build works.
+
+Provide the real repository URL and real live demo URL only after they exist.
+
+---
+
+## 20. FINAL PROJECT SUBMISSION REQUIREMENTS
+
+The completed project must include:
+
+1. Public GitHub repository URL.
+2. Working Vercel deployment URL.
+3. Complete React source code.
+4. Required folder structure.
+5. README.md.
+6. Screenshots of the Home page.
+7. Screenshots of the Courses page.
+8. Screenshots of the Course Details page.
+9. Screenshots of the Dashboard.
+10. Screenshots of the Lesson page.
+11. Desktop and mobile screenshots.
+12. At least one tablet screenshot.
+13. Brief project description.
+14. Main features explanation.
+15. Components and hooks explanation.
+16. Testing summary.
+
+Create screenshot placeholders in the README only if actual screenshots have not yet been captured. Do not claim screenshots, links, or deployment are complete when they are not.
+
+---
+
+## 21. IMPORTANT DEVELOPMENT RULES
+
+Follow these rules throughout the project:
+
+* Fulfill all mandatory requirements in the supplied Frontend Task 6 PDF.
+* Do not skip any of the five main application pages.
+* Implement all required functionality, not just the visual design.
+* Use React components, props, hooks, events, and conditional rendering.
+* Keep course data in local JavaScript files.
+* Use localStorage for enrollment and lesson completion.
+* Do not create a backend or database.
+* Do not implement login or authentication.
+* Do not implement payment or checkout functionality.
+* Do not install prohibited packages.
+* Do not use TypeScript.
+* Do not use fake buttons or dead links.
+* Do not use Lorem Ipsum.
+* Do not store calculated progress values separately.
+* Do not use direct DOM manipulation.
+* Keep components reusable and code readable.
+* Use accessible HTML and responsive Tailwind classes.
+* Ensure all route parameters are validated.
+* Handle empty states and invalid data safely.
+* Do not claim features or testing results that do not exist.
+* Make sure the application can be installed, started, built, and deployed.
+
+If a requirement is unclear, follow the supplied PDF rather than inventing a different architecture.
+
+---
+
+## 22. REQUIRED FINAL RESPONSE FROM THE CODING AI
+
+When implementation is complete, provide:
+
+1. A summary of the completed LearnHub LMS.
+2. The list of implemented pages.
+3. The list of working features.
+4. The technology stack.
+5. The project folder structure.
+6. Instructions to run the project locally.
+7. The exact command to build the project.
+8. A summary of responsive design decisions.
+9. A testing checklist showing verified and unverified items separately.
+10. Instructions for pushing the project to GitHub.
+11. Instructions for deploying the project on Vercel.
+12. Any remaining issues that still need attention.
+
+If you are generating the project files directly, create the actual files rather than returning only illustrative snippets.
+
+If you cannot create files directly, provide the complete code for every required file with its exact path and clear setup instructions.
+
+Do not stop after generating the homepage. Continue until all mandatory pages, components, functionality, persistence, responsive styling, testing instructions, and deployment configuration are covered.
+
+**FINAL GOAL:** Deliver a fully functional, visually polished, responsive, beginner-friendly, portfolio-ready LearnHub Learning Management System that satisfies the mandatory requirements of Frontend Task 6 and is ready for GitHub submission and Vercel deployment.

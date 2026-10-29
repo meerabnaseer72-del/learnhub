@@ -1,0 +1,6 @@
+{
+  "name": "LearnHub — Learning Management System",
+  "description": "A modern, responsive Learning Management System to discover courses, track learning progress, and master new skills.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
